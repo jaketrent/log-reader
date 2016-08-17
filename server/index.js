@@ -9,9 +9,8 @@ const mount = require('koa-mount')
 const route = require('koa-route')
 
 const db = require('./db')
-const graphql = require('./graphql')
 const static = require('./static')
-// const trans = require('./trans')
+const logs = require('./logs')
 
 const app = koa()
 const port = process.env.PORT || 3000
@@ -19,8 +18,7 @@ const port = process.env.PORT || 3000
 app.use(logger())
 app.use(mount('/static', static))
 app.use(bodyParser())
-app.use(mount('/api/v1/graphql', graphql))
-// app.use(mount('/api/v1/transactions', trans))
+app.use(mount('/api/v1/logs', logs))
 app.use(route.get('/', index))
 
 function* index() {

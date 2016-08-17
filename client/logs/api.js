@@ -1,23 +1,20 @@
 import axios from 'axios'
 
+import * as utils from './utils'
+
 export const query = {
-  formatUrl({ query }) {
-    const message = query // TODO: handle interest multi-field queries
-    const gql = `
-      {
-        logs(message: "${message}") {
-          message
-        }
-      }
-    `
-    return `/api/v1/graphql?query=${encodeURIComponent(gql)}`
+  formatUrl() {
+    return '/api/v1/logs'
+  },
+  serialize({ query }) {
+    return { data: utils.parsePayload(query) }
   },
   request(args) {
     const { api } = args
-    return axios.get(api.formatUrl(args))
+    return axios.post(api.formatUrl(args), api.serialize(args))
   },
   deserializeSuccess(res) {
-    return res.data.data.logs
+    return res.data.data
   },
   deserializeError(res) {
     return res.data
