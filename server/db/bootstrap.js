@@ -6,7 +6,6 @@ const stream = require('stream')
 
 const db = require('./index')
 let num = 1
-
 const fsOpts = {
   flags: 'r',
   encoding: 'utf-8'
@@ -24,7 +23,7 @@ function ingest(json, db) {
   // TODO: figure out why, if not using sync, not actually saving
   return db.logs.saveSync({
     message: json.msg,
-    // payload: json
+    payload: json
   }) // fire and forget
 }
 
