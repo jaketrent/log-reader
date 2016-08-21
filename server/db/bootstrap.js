@@ -23,7 +23,7 @@ function ingest(json, db) {
   // TODO: figure out why, if not using sync, not actually saving
   return db.logs.saveSync({
     message: json.msg,
-    payload: json
+    body: json
   }) // fire and forget
 }
 

@@ -34,7 +34,7 @@ function toMapOfKeysAndVals(acc, keyAndVal) {
   }
 }
 
-export function parsePayload(query) {
+export function parseBody(query) {
   if (!query) return {}
 
   return query.split(' ')

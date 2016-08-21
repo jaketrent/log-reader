@@ -7,7 +7,7 @@ export const query = {
     return '/api/v1/logs'
   },
   serialize({ query }) {
-    return { data: utils.parsePayload(query) }
+    return { data: utils.parseBody(query) }
   },
   request(args) {
     const { api } = args

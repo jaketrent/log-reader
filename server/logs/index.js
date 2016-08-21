@@ -6,7 +6,7 @@ const repo = require('./repo')
 const app = koa()
 
 function* list() {
-  const logs = yield repo.query(this.request.body.data)
+  const logs = yield repo.query(this.db, this.request.body.data)
   this.body = {
     data: logs
   }

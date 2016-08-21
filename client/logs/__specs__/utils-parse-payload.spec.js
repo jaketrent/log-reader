@@ -1,6 +1,6 @@
 import test from 'ava'
 
-import { parsePayload as subject } from '../utils'
+import { parseBody as subject } from '../utils'
 
 test('empty object by default', t => {
   t.deepEqual(subject(), {})
